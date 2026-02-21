@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verification Result</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            background: #fff;
+            color: #333;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            padding: 30px 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #185a9d;
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 14px 18px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #4caf50;
+            color: white;
+            text-align: center;
+        }
+
+        td {
+            background: #fafafa;
+        }
+
+        .not-found {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📄 Verification Result</h1>
+
+        {% if exists %}
+        <table>
+            <tr><th>Certificate ID</th><td>{{ cert_id }}</td></tr>
+            <tr><th>Issuer</th><td>{{ issuer }}</td></tr>
+            <tr><th>Timestamp</th><td>{{ timestamp }}</td></tr>
+        </table>
+        {% else %}
+        <div class="not-found">❌ Certificate not found on blockchain</div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
